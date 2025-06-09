@@ -12,7 +12,7 @@ public class UIInventory : MonoBehaviour
     {
         foreach (Transform child in slotParent)
             Destroy(child.gameObject);
-
+        
         slots.Clear();
 
         foreach (var item in items)
