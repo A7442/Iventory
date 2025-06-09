@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class UIStatus : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro atkText;
-    [SerializeField] private TextMeshPro defText;
-    [SerializeField] private TextMeshPro hpText;
-    [SerializeField] private TextMeshPro crtText;
+    [SerializeField] private TextMeshProUGUI atkText;
+    [SerializeField] private TextMeshProUGUI defText;
+    [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private TextMeshProUGUI crtText;
 
 
     public void SetCharacterInfo(Character player)
