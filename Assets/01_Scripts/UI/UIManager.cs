@@ -12,14 +12,4 @@ public class UIManager : MonoBehaviour
         statusUI = FindAnyObjectByType<UIStatus>();
         inventoryUI = FindAnyObjectByType<UIInventory>();
     }
-
-    public void OpenUI(GameObject canvas)
-    {
-        canvas.SetActive(true);
-    }
-    
-    public void CloseUI(GameObject canvas)
-    {
-        canvas.SetActive(false);
-    }
 }

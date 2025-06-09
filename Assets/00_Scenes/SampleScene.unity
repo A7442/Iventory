@@ -2294,10 +2294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f732332c0f5773e41a9811882139a539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkText: {fileID: 0}
-  defText: {fileID: 0}
-  hpText: {fileID: 0}
-  crtText: {fileID: 0}
+  atkText: {fileID: 787351603}
+  defText: {fileID: 1635974033}
+  hpText: {fileID: 1429580019}
+  crtText: {fileID: 534714775}
 --- !u!1 &652049191
 GameObject:
   m_ObjectHideFlags: 0
