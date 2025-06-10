@@ -5,17 +5,24 @@ using UnityEngine.UI;
 
 public class UISlot : MonoBehaviour
 {
+    public Image equipImage;
+    
     [SerializeField] private Image icon;
-    private Item currentItem;
+    private Item _currentItem;
 
-    public void SetItem(Item item)
+    public bool SetItem(Item item)
     {
-        currentItem = item;
+        if (_currentItem != null)
+        {
+            return false;
+        }
+        _currentItem = item;
         RefreshUI();
+        return true;
     }
 
     private void RefreshUI()
     {
-        icon.sprite = currentItem.icon;
+        icon.sprite = _currentItem.icon;
     }
 }

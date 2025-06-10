@@ -35,6 +35,19 @@ public class Character : MonoBehaviour
         Inventory.Add(item);
     }
 
-    public void Equip(Item item) { /* 장착 로직 */ }
-    public void UnEquip(Item item) { /* 장착 해제 로직 */ }
+    public void Equip(Item item)
+    {
+        Atk += item.plusAtk;
+        Def += item.plusDef;
+        Hp += item.plusHp;
+        Crt += item.plusCrt;
+    }
+
+    public void UnEquip(Item item)
+    {
+        Atk -= item.plusAtk;
+        Def -= item.plusDef;
+        Hp -= item.plusHp;
+        Crt -= item.plusCrt;
+    }
 }
