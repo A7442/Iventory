@@ -57,7 +57,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void UseGold(float gold)
+    public void UseGold(float gold)//골드 소모
     {
         if (Gold >= gold)
         {
@@ -65,7 +65,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void PlusExp(float exp)
+    public void PlusExp(float exp)//레벨업 기능, 기능만 넣어봄
     {
         Exp += exp;
         while (Exp < 12.0f)

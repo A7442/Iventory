@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         SetData();
     }
 
-    public void SetData()
+    public void SetData()//플레이어 초기 정보
     {
         Player = new Character
             ("A", "초록 도마뱀", "초록색 도마뱀이다. 귀여워보이지만 무시무시한 힘을 갖고있다" 

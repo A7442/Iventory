@@ -29,7 +29,7 @@ public class UISlot : MonoBehaviour
         icon.sprite = currentItem.icon;
     }
 
-    public void SelectItem()
+    public void SelectItem()//인벤토리 클릭확인
     {
         if (uiInventory.selectedSlot != null)
         {
@@ -40,7 +40,7 @@ public class UISlot : MonoBehaviour
         CheckEquip();
     }
 
-    public void CheckEquip()
+    public void CheckEquip()//슬롯 아이템 장착 여부 확인
     {
         if (uiInventory.selectedSlot.currentItem == null)
         {
