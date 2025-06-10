@@ -37,18 +37,15 @@ public class Character : MonoBehaviour
     {
         if (equippedItems.ContainsKey(item.type))
         {
-            Debug.Log("이미 이 타입의 아이템이 장착되어 있습니다.");
-            return false;
+            
         }
-
-        // 착용
+        
         equippedItems[item.type] = item;
-        Debug.Log(item.itemName + " 착용 완료!");
-        return true;
         Atk += item.plusAtk;
         Def += item.plusDef;
         Hp += item.plusHp;
         Crt += item.plusCrt;
+        return true;
     }
 
     public void UnEquip(Item item)

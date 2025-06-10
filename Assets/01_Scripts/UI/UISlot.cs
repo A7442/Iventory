@@ -9,10 +9,9 @@ public class UISlot : MonoBehaviour
     public Outline outline;
     public bool isequiped;
     public UIInventory uiInventory;
+    public Item currentItem;
     
     [SerializeField] private Image icon;
-    [SerializeField] private Item currentItem;
-
     
     public bool SetItem(Item item)
     {

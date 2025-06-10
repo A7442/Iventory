@@ -15,6 +15,8 @@ public class UIInventory : MonoBehaviour
     private void Start()
     {
         InitInventoryUI();
+        equipBt.onClick.AddListener(Equip);
+        unEquipBt.onClick.AddListener(UnEquip);
     }
 
     public void InitInventoryUI()
@@ -48,8 +50,15 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    public void SelectSlot()
+    public void Equip()
     {
-        
+        selectedSlot.isequiped = true;
+        GameManager.Instance.Player.Equip(selectedSlot.currentItem);
+    }
+    
+    public void UnEquip()
+    {
+        selectedSlot.isequiped = false;
+        GameManager.Instance.Player.UnEquip(selectedSlot.currentItem);
     }
 }

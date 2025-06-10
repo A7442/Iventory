@@ -1641,6 +1641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedSlot: {fileID: 0}
+  equipBt: {fileID: 719089994}
+  unEquipBt: {fileID: 448830005}
   slotPrefab: {fileID: 5606870137073387984, guid: 7d46f5ce86012624abc02e8023acd9a6, type: 3}
   slotParent: {fileID: 773834552}
   slots: []
