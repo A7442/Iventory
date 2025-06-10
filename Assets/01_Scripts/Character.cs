@@ -15,8 +15,10 @@ public class Character : MonoBehaviour
     public float Crt { get; private set; }
 
     public List<Item> Inventory { get; private set; }
+    
+    public Dictionary<ItemType, Item> equippedItems { get; private set; }
 
-    public Character(string name, string job, string explain, int level,  float exp, float atk, float def, float hp, float crt, List<Item> inventory)
+    public Character(string name, string job, string explain, int level,  float exp, float atk, float def, float hp, float crt, List<Item> inventory, Dictionary<ItemType, Item> equippeditems)
     {
         PlayerName = name;
         Job = job;
@@ -28,15 +30,21 @@ public class Character : MonoBehaviour
         Hp = hp;
         Crt = crt;
         Inventory = inventory;
+        equippedItems = equippeditems;
     }
 
-    public void AddItem(Item item)
+    public bool Equip(Item item)
     {
-        Inventory.Add(item);
-    }
+        if (equippedItems.ContainsKey(item.type))
+        {
+            Debug.Log("이미 이 타입의 아이템이 장착되어 있습니다.");
+            return false;
+        }
 
-    public void Equip(Item item)
-    {
+        // 착용
+        equippedItems[item.type] = item;
+        Debug.Log(item.itemName + " 착용 완료!");
+        return true;
         Atk += item.plusAtk;
         Def += item.plusDef;
         Hp += item.plusHp;

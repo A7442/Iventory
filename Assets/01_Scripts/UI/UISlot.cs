@@ -6,23 +6,47 @@ using UnityEngine.UI;
 public class UISlot : MonoBehaviour
 {
     public Image equipImage;
+    public Outline outline;
+    public bool isequiped;
+    public UIInventory uiInventory;
     
     [SerializeField] private Image icon;
-    private Item _currentItem;
+    [SerializeField] private Item currentItem;
 
+    
     public bool SetItem(Item item)
     {
-        if (_currentItem != null)
+        if (currentItem != null)
         {
             return false;
         }
-        _currentItem = item;
+        currentItem = item;
         RefreshUI();
         return true;
     }
 
     private void RefreshUI()
     {
-        icon.sprite = _currentItem.icon;
+        icon.sprite = currentItem.icon;
+    }
+
+    public void SelectItem()
+    {
+        if (uiInventory.selectedSlot != null)
+        {
+            uiInventory.selectedSlot.outline.enabled = false;
+        }
+        outline.enabled = true;
+        uiInventory.selectedSlot = this;
+        if (uiInventory.selectedSlot.isequiped)
+        {
+            uiInventory.equipBt.gameObject.SetActive(false);
+            uiInventory.unEquipBt.gameObject.SetActive(true);
+        }
+        else
+        {
+            uiInventory.equipBt.gameObject.SetActive(true);
+            uiInventory.unEquipBt.gameObject.SetActive(false);
+        }
     }
 }

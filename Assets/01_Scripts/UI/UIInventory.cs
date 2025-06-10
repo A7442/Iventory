@@ -1,17 +1,16 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
+    public UISlot selectedSlot;
+    public Button equipBt; 
+    public Button unEquipBt;
+    
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotParent;
-
     [SerializeField] private List<UISlot> slots = new ();
-
-    //임시
-    private int _slotnum = 0;
     
     private void Start()
     {
@@ -32,6 +31,8 @@ public class UIInventory : MonoBehaviour
             var obj = Instantiate(slotPrefab, slotParent);
             var slot = obj.GetComponent<UISlot>();
             slot.equipImage.gameObject.SetActive(false);
+            slot.outline.enabled = false;
+            slot.uiInventory = this;
             slots.Add(slot);
         }
     }
@@ -45,5 +46,10 @@ public class UIInventory : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void SelectSlot()
+    {
+        
     }
 }

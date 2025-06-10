@@ -25,6 +25,6 @@ public class GameManager : MonoBehaviour
     {
         Player = new Character
             ("A", "초록 도마뱀", "초록색 도마뱀이다. 귀여워보이지만 무시무시한 힘을 갖고있다" 
-                ,10, 0,20,20,40,5,new List<Item>());
+                ,10, 0,20,20,40,5,new List<Item>(),new Dictionary<ItemType, Item>());
     }
 }
