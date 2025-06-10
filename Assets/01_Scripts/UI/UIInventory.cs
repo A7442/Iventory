@@ -11,6 +11,7 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotParent;
     [SerializeField] private List<UISlot> slots = new ();
+    [SerializeField] private UIStatus uiStatus;
     
     private void Start()
     {
@@ -36,7 +37,11 @@ public class UIInventory : MonoBehaviour
             slot.outline.enabled = false;
             slot.uiInventory = this;
             slots.Add(slot);
+            slot.isEquiped = false;
         }
+        
+        equipBt.gameObject.SetActive(true);
+        unEquipBt.gameObject.SetActive(false);
     }
 
     public void SetSlot(Item item)
@@ -52,13 +57,39 @@ public class UIInventory : MonoBehaviour
 
     public void Equip()
     {
-        selectedSlot.isequiped = true;
-        GameManager.Instance.Player.Equip(selectedSlot.currentItem);
+        if (selectedSlot.currentItem == null)
+        {
+            return;
+        }
+
+        if (GameManager.Instance.Player.equippedItems.ContainsKey(selectedSlot.currentItem.type))
+        {
+            foreach (var slot in slots)
+            {
+                if (slot.currentItem == null)
+                {
+                    continue;
+                }
+
+                if (slot.currentItem.type == selectedSlot.currentItem.type && slot.isEquiped)
+                {
+                    slot.isEquiped = false;
+                    GameManager.Instance.Player.UnEquip(slot);
+                    slot.CheckEquip();
+                }
+            }
+        }
+        selectedSlot.isEquiped = true;
+        GameManager.Instance.Player.Equip(selectedSlot);
+        selectedSlot.CheckEquip();
+        uiStatus.SetCharacterInfo(GameManager.Instance.Player);
     }
     
     public void UnEquip()
     {
-        selectedSlot.isequiped = false;
-        GameManager.Instance.Player.UnEquip(selectedSlot.currentItem);
+        selectedSlot.isEquiped = false;
+        GameManager.Instance.Player.UnEquip(selectedSlot);
+        selectedSlot.CheckEquip();
+        uiStatus.SetCharacterInfo(GameManager.Instance.Player);
     }
 }

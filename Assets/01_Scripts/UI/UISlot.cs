@@ -7,9 +7,9 @@ public class UISlot : MonoBehaviour
 {
     public Image equipImage;
     public Outline outline;
-    public bool isequiped;
     public UIInventory uiInventory;
     public Item currentItem;
+    public bool isEquiped;
     
     [SerializeField] private Image icon;
     
@@ -37,13 +37,24 @@ public class UISlot : MonoBehaviour
         }
         outline.enabled = true;
         uiInventory.selectedSlot = this;
-        if (uiInventory.selectedSlot.isequiped)
+        CheckEquip();
+    }
+
+    public void CheckEquip()
+    {
+        if (uiInventory.selectedSlot.currentItem == null)
         {
+            return;
+        }
+        if (uiInventory.selectedSlot.isEquiped)
+        {
+            equipImage.gameObject.SetActive(true);
             uiInventory.equipBt.gameObject.SetActive(false);
             uiInventory.unEquipBt.gameObject.SetActive(true);
         }
         else
         {
+            equipImage.gameObject.SetActive(false);
             uiInventory.equipBt.gameObject.SetActive(true);
             uiInventory.unEquipBt.gameObject.SetActive(false);
         }

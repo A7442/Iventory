@@ -19,3 +19,4 @@ MonoBehaviour:
   plusDef: 50
   plusHp: 50
   plusCrt: 0
+  isEquiped: 0

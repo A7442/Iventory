@@ -11,7 +11,9 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI job;
     [SerializeField] private TextMeshProUGUI level;
     [SerializeField] private Image expBar;
+    [SerializeField] private TextMeshProUGUI expInfo;
     [SerializeField] private TextMeshProUGUI gold;
+    [SerializeField] private TextMeshProUGUI jobInfo;
     [Header("버튼")]
     [SerializeField] private Button statusButton;
     [SerializeField] private Button inventoryButton;
@@ -31,7 +33,7 @@ public class UIMainMenu : MonoBehaviour
         bt.SetActive(true);
         uiStatus.gameObject.SetActive(false);
         uiInventory.gameObject.SetActive(false);
-        SetCharacterInfo(GameManager.Instance.Player);
+        SetCharacterInfo();
     }
 
     private void OpenMainMenu()
@@ -62,8 +64,21 @@ public class UIMainMenu : MonoBehaviour
     }
     
 
-    public void SetCharacterInfo(Character player)//나중에
+    public void SetCharacterInfo()
     {
-        
+        playerName.text = GameManager.Instance.Player.PlayerName;
+        job.text = GameManager.Instance.Player.Job;
+        level.text = $"{GameManager.Instance.Player.Level}";
+        expBar.fillAmount = GameManager.Instance.Player.Exp / 12;
+        expInfo.text = $"{GameManager.Instance.Player.Exp} / {12}";
+        gold.text = GoldComma();
+        jobInfo.text = GameManager.Instance.Player.JobExplain;
+    }
+
+    public string GoldComma()
+    {
+        float gold = GameManager.Instance.Player.Gold;
+        string formatted = gold.ToString("N0");
+        return formatted;
     }
 }

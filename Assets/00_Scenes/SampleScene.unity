@@ -463,6 +463,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: efbc978dca251a744a1f3845eedfa29f, type: 2}
   drawRandomBt: {fileID: 109550808}
   uiInventory: {fileID: 467215457}
+  uiMainMenu: {fileID: 1961152131}
 --- !u!1 &113182727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,6 +1647,7 @@ MonoBehaviour:
   slotPrefab: {fileID: 5606870137073387984, guid: 7d46f5ce86012624abc02e8023acd9a6, type: 3}
   slotParent: {fileID: 773834552}
   slots: []
+  uiStatus: {fileID: 628928542}
 --- !u!1 &471466329
 GameObject:
   m_ObjectHideFlags: 0
@@ -5611,7 +5613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB79C\uB364 \uC544\uC774\uD15C\n\uBF51\uAE30"
+  m_text: "\uB79C\uB364 \uBF51\uAE30\n-100g"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f3cc4034179fa03459f5c6a309781fe8, type: 2}
   m_sharedMaterial: {fileID: 6793134288728884128, guid: f3cc4034179fa03459f5c6a309781fe8, type: 2}
@@ -6130,7 +6132,9 @@ MonoBehaviour:
   job: {fileID: 1162900531}
   level: {fileID: 1439541620}
   expBar: {fileID: 471466331}
+  expInfo: {fileID: 1698852356}
   gold: {fileID: 1354499607}
+  jobInfo: {fileID: 1818088829}
   statusButton: {fileID: 2077411007}
   inventoryButton: {fileID: 42571970}
   backButton: {fileID: 848585693}

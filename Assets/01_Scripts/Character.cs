@@ -13,12 +13,14 @@ public class Character : MonoBehaviour
     public float Def { get; private set; }
     public float Hp { get; private set; }
     public float Crt { get; private set; }
+    
+    public float Gold { get; private set; }
 
     public List<Item> Inventory { get; private set; }
     
-    public Dictionary<ItemType, Item> equippedItems { get; private set; }
+    public Dictionary<ItemType, UISlot> equippedItems { get; private set; }
 
-    public Character(string name, string job, string explain, int level,  float exp, float atk, float def, float hp, float crt, List<Item> inventory, Dictionary<ItemType, Item> equippeditems)
+    public Character(string name, string job, string explain, int level,  float exp, float atk, float def, float hp, float crt, float gold,List<Item> inventory, Dictionary<ItemType, UISlot> equippeditems)
     {
         PlayerName = name;
         Job = job;
@@ -29,30 +31,50 @@ public class Character : MonoBehaviour
         Def = def;
         Hp = hp;
         Crt = crt;
+        Gold = gold;
         Inventory = inventory;
         equippedItems = equippeditems;
     }
 
-    public bool Equip(Item item)
+    public void Equip(UISlot uiSlot)
     {
-        if (equippedItems.ContainsKey(item.type))
-        {
-            
-        }
-        
-        equippedItems[item.type] = item;
-        Atk += item.plusAtk;
-        Def += item.plusDef;
-        Hp += item.plusHp;
-        Crt += item.plusCrt;
-        return true;
+        equippedItems[uiSlot.currentItem.type] = uiSlot;
+        Atk += uiSlot.currentItem.plusAtk;
+        Def += uiSlot.currentItem.plusDef;
+        Hp += uiSlot.currentItem.plusHp;
+        Crt += uiSlot.currentItem.plusCrt;
     }
 
-    public void UnEquip(Item item)
+    public void UnEquip(UISlot uiSlot)
     {
-        Atk -= item.plusAtk;
-        Def -= item.plusDef;
-        Hp -= item.plusHp;
-        Crt -= item.plusCrt;
+        Atk -= uiSlot.currentItem.plusAtk;
+        Def -= uiSlot.currentItem.plusDef;
+        Hp -= uiSlot.currentItem.plusHp;
+        Crt -= uiSlot.currentItem.plusCrt;
+        if (equippedItems.ContainsKey(uiSlot.currentItem.type))
+        {
+            equippedItems.Remove(uiSlot.currentItem.type);
+        }
+    }
+
+    public void UseGold(float gold)
+    {
+        if (Gold >= gold)
+        {
+            Gold -= gold;
+        }
+    }
+
+    public void PlusExp(float exp)
+    {
+        Exp += exp;
+        while (Exp < 12.0f)
+        {
+            if (Exp >= 12.0f)
+            {
+                Level++;
+                Exp =- 12.0f;
+            }
+        }
     }
 }
